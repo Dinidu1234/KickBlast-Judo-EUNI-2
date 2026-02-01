@@ -1,0 +1,60 @@
+<Page x:Class="KickBlastLuxUI.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <StackPanel>
+        <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="Pricing Settings" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Beginner Weekly Fee" Style="{StaticResource CaptionText}" />
+                        <TextBox Text="{Binding BeginnerWeeklyFee, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Intermediate Weekly Fee" Style="{StaticResource CaptionText}" />
+                        <TextBox Text="{Binding IntermediateWeeklyFee, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Elite Weekly Fee" Style="{StaticResource CaptionText}" />
+                        <TextBox Text="{Binding EliteWeeklyFee, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                        <TextBlock Text="Competition Fee" Style="{StaticResource CaptionText}" />
+                        <TextBox Text="{Binding CompetitionFee, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Coaching Hourly Rate" Style="{StaticResource CaptionText}" />
+                        <TextBox Text="{Binding CoachingHourlyRate, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button Content="Save Pricing" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" Margin="0,12,0,0" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="Theme" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="Dark mode" Style="{StaticResource BodyText}" Margin="0,0,12,0" />
+                        <ToggleButton IsChecked="{Binding IsDarkTheme}" Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+                    </StackPanel>
+                    <TextBlock Text="Accent" Style="{StaticResource CaptionText}" Margin="0,16,0,0" />
+                    <ComboBox ItemsSource="{Binding AccentOptions}" SelectedItem="{Binding SelectedAccent}" />
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Database" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                    <TextBlock Text="Reset the database to seeded defaults." Style="{StaticResource BodyText}" Margin="0,0,0,12" />
+                    <Button Content="Reset Database" Style="{StaticResource SecondaryButton}" Command="{Binding ResetDbCommand}" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </StackPanel>
+</Page>

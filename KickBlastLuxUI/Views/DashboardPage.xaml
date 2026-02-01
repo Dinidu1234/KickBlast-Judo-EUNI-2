@@ -1,0 +1,81 @@
+<Page x:Class="KickBlastLuxUI.Views.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+        <Border Style="{StaticResource CardStyle}" Margin="0,0,0,24">
+            <StackPanel>
+                <TextBlock Text="Welcome back" Style="{StaticResource TitleText}" />
+                <TextBlock Text="Your training operations overview for this month." Style="{StaticResource BodyText}" />
+            </StackPanel>
+        </Border>
+
+        <Grid Margin="0,0,0,24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="Total Athletes" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding TotalAthletes}" Style="{StaticResource SectionHeaderText}" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="Calculations This Month" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding CalculationsThisMonth}" Style="{StaticResource SectionHeaderText}" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="2" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="Revenue This Month" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding RevenueThisMonth, StringFormat=C}" Style="{StaticResource SectionHeaderText}" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="3" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Next Competition" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding NextCompetitionDate, StringFormat=MMM dd}" Style="{StaticResource SectionHeaderText}" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                <StackPanel>
+                    <TextBlock Text="Recent Calculations" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                    <DataGrid ItemsSource="{Binding RecentCalculations}" Height="260">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=MMM dd}" />
+                            <DataGridTextColumn Header="Athlete" Binding="{Binding Athlete.Name}" />
+                            <DataGridTextColumn Header="Plan" Binding="{Binding Athlete.TrainingPlan.Name}" />
+                            <DataGridTextColumn Header="Total" Binding="{Binding TotalCost, StringFormat=C}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Quick Actions" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                    <Button Style="{StaticResource PrimaryButton}" Content="Add Athlete" Margin="0,0,0,12" />
+                    <Button Style="{StaticResource SecondaryButton}" Content="New Calculation" />
+                </StackPanel>
+            </Border>
+        </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid Background="#66000000" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <ProgressBar />
+        </Grid>
+    </Grid>
+</Page>

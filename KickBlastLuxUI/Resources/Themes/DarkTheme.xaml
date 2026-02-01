@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="AppBackgroundColor">#151822</Color>
+    <Color x:Key="CardBackgroundColor">#1E2230</Color>
+    <Color x:Key="AppTextColor">#F3F4F8</Color>
+    <Color x:Key="SubtleTextColor">#A7ADBB</Color>
+    <Color x:Key="DividerColor">#2D3342</Color>
+
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="{StaticResource AppBackgroundColor}" />
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{StaticResource CardBackgroundColor}" />
+    <SolidColorBrush x:Key="AppTextBrush" Color="{StaticResource AppTextColor}" />
+    <SolidColorBrush x:Key="SubtleTextBrush" Color="{StaticResource SubtleTextColor}" />
+    <SolidColorBrush x:Key="DividerBrush" Color="{StaticResource DividerColor}" />
+</ResourceDictionary>

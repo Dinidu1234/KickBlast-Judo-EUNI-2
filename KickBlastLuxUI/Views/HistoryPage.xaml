@@ -1,0 +1,62 @@
+<Page x:Class="KickBlastLuxUI.Views.HistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource CardStyle}" Margin="0,0,0,16">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Width="200" ItemsSource="{Binding Athletes}" SelectedItem="{Binding SelectedAthlete}" DisplayMemberPath="Name" materialDesign:HintAssist.Hint="Athlete" />
+                <ComboBox Width="120" ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" materialDesign:HintAssist.Hint="Month" Margin="12,0,0,0" />
+                <ComboBox Width="120" ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" materialDesign:HintAssist.Hint="Year" Margin="12,0,0,0" />
+                <Button Content="Clear Filters" Style="{StaticResource SecondaryButton}" Command="{Binding ClearFiltersCommand}" Margin="12,0,0,0" />
+                <Button Content="Export" Style="{StaticResource PrimaryButton}" Command="{Binding ExportCommand}" Margin="12,0,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+                <DataGrid ItemsSource="{Binding Calculations}" SelectedItem="{Binding SelectedCalculation}" Height="420">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=yyyy-MM-dd}" />
+                        <DataGridTextColumn Header="Athlete" Binding="{Binding Athlete.Name}" />
+                        <DataGridTextColumn Header="Plan" Binding="{Binding Athlete.TrainingPlan.Name}" />
+                        <DataGridTextColumn Header="Total" Binding="{Binding TotalCost, StringFormat=C}" />
+                        <DataGridTextColumn Header="Competitions" Binding="{Binding CompetitionsCount}" />
+                        <DataGridTextColumn Header="Coaching" Binding="{Binding CoachingHoursPerWeek}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                <StackPanel>
+                    <TextBlock Text="Details" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                    <TextBlock Text="Athlete" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding SelectedCalculation.Athlete.Name}" Style="{StaticResource BodyText}" Margin="0,0,0,8" />
+                    <TextBlock Text="Plan" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding SelectedCalculation.Athlete.TrainingPlan.Name}" Style="{StaticResource BodyText}" Margin="0,0,0,8" />
+                    <TextBlock Text="Training Cost" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding SelectedCalculation.TrainingCost, StringFormat=C}" Style="{StaticResource BodyText}" Margin="0,0,0,8" />
+                    <TextBlock Text="Coaching Cost" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding SelectedCalculation.CoachingCost, StringFormat=C}" Style="{StaticResource BodyText}" Margin="0,0,0,8" />
+                    <TextBlock Text="Competition Cost" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding SelectedCalculation.CompetitionCost, StringFormat=C}" Style="{StaticResource BodyText}" Margin="0,0,0,8" />
+                    <TextBlock Text="Total" Style="{StaticResource CaptionText}" />
+                    <TextBlock Text="{Binding SelectedCalculation.TotalCost, StringFormat=C}" Style="{StaticResource SectionHeaderText}" />
+                </StackPanel>
+            </Border>
+            <Grid Grid.ColumnSpan="2" Background="#66000000" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <ProgressBar />
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,77 @@
+<Page x:Class="KickBlastLuxUI.Views.FeeCalculatorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,16,0">
+            <StackPanel>
+                <TextBlock Text="Fee Calculator" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                <TextBlock Text="Athlete" Style="{StaticResource CaptionText}" />
+                <ComboBox ItemsSource="{Binding Athletes}" SelectedItem="{Binding SelectedAthlete}" DisplayMemberPath="Name" />
+
+                <TextBlock Text="Competitions" Style="{StaticResource CaptionText}" />
+                <TextBox Text="{Binding CompetitionsCount, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding CompetitionsError}" Foreground="Salmon" FontSize="12" />
+
+                <TextBlock Text="Coaching Hours / Week" Style="{StaticResource CaptionText}" />
+                <TextBox Text="{Binding CoachingHours, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding CoachingError}" Foreground="Salmon" FontSize="12" />
+
+                <Button Content="Calculate &amp; Save" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" Margin="0,12,0,0" />
+                <TextBlock Text="{Binding StatusMessage}" Foreground="MediumSeaGreen" FontSize="12" Margin="0,8,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+            <StackPanel>
+                <TextBlock Text="Invoice Preview" Style="{StaticResource SectionHeaderText}" Margin="0,0,0,12" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Athlete:" Style="{StaticResource CaptionText}" Width="120" />
+                    <TextBlock Text="{Binding Preview.Athlete.Name}" Style="{StaticResource BodyText}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Plan:" Style="{StaticResource CaptionText}" Width="120" />
+                    <TextBlock Text="{Binding Preview.Athlete.TrainingPlan.Name}" Style="{StaticResource BodyText}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Weight Status:" Style="{StaticResource CaptionText}" Width="120" />
+                    <Border Background="{DynamicResource DividerBrush}" Padding="6,2" CornerRadius="10">
+                        <TextBlock Text="{Binding Preview.WeightDifference}" FontSize="12" />
+                    </Border>
+                </StackPanel>
+
+                <Separator Margin="0,8" />
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Training" Style="{StaticResource CaptionText}" Width="120" />
+                    <TextBlock Text="{Binding Preview.TrainingCost, StringFormat=C}" Style="{StaticResource BodyText}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Coaching" Style="{StaticResource CaptionText}" Width="120" />
+                    <TextBlock Text="{Binding Preview.CoachingCost, StringFormat=C}" Style="{StaticResource BodyText}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Competition" Style="{StaticResource CaptionText}" Width="120" />
+                    <TextBlock Text="{Binding Preview.CompetitionCost, StringFormat=C}" Style="{StaticResource BodyText}" />
+                </StackPanel>
+
+                <Separator Margin="0,8" />
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <TextBlock Text="Total" Style="{StaticResource SectionHeaderText}" Width="120" />
+                    <TextBlock Text="{Binding Preview.TotalCost, StringFormat=C}" Style="{StaticResource SectionHeaderText}" />
+                </StackPanel>
+                <TextBlock Text="Second Saturday: " Style="{StaticResource CaptionText}" />
+                <TextBlock Text="{Binding Preview.SecondSaturday, StringFormat=MMM dd}" Style="{StaticResource BodyText}" />
+            </StackPanel>
+        </Border>
+        <Grid Background="#66000000" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <ProgressBar />
+        </Grid>
+    </Grid>
+</Page>

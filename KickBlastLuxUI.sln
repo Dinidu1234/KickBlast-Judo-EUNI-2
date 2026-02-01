@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickBlastLuxUI", "KickBlastLuxUI/KickBlastLuxUI.csproj", "{D1E0AC3E-2A2F-4A9A-9E7A-22D3E0F2D1E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickBlastLuxUI.Data", "KickBlastLuxUI.Data/KickBlastLuxUI.Data.csproj", "{4BFE6C4F-9F5A-49CF-ABCE-4B4CFA94D4B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickBlastLuxUI.Services", "KickBlastLuxUI.Services/KickBlastLuxUI.Services.csproj", "{2D3FA8A1-9C9C-48C9-9D1D-2B3D4F5E6A7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1E0AC3E-2A2F-4A9A-9E7A-22D3E0F2D1E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E0AC3E-2A2F-4A9A-9E7A-22D3E0F2D1E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E0AC3E-2A2F-4A9A-9E7A-22D3E0F2D1E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E0AC3E-2A2F-4A9A-9E7A-22D3E0F2D1E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFE6C4F-9F5A-49CF-ABCE-4B4CFA94D4B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFE6C4F-9F5A-49CF-ABCE-4B4CFA94D4B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFE6C4F-9F5A-49CF-ABCE-4B4CFA94D4B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFE6C4F-9F5A-49CF-ABCE-4B4CFA94D4B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D3FA8A1-9C9C-48C9-9D1D-2B3D4F5E6A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D3FA8A1-9C9C-48C9-9D1D-2B3D4F5E6A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D3FA8A1-9C9C-48C9-9D1D-2B3D4F5E6A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D3FA8A1-9C9C-48C9-9D1D-2B3D4F5E6A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
